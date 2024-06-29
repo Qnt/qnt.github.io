@@ -1,0 +1,60 @@
+.header {
+  outline: 1px solid red;
+}
+
+#hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  inline-size: clamp(300px, 70%, 600px);
+  margin: 0 auto;
+  padding: 1rem;
+  outline: 1px solid blue;
+}
+
+.hero__container {
+  outline: 1px dashed lime;
+  flex: 4;
+}
+
+.hero__avatar {
+  outline: 1px dashed lime;
+  flex: 1;
+  max-inline-size: 60%;
+}
+
+.hero__contacts a::after {
+  content: "\2197";
+}
+
+.about__container {
+  outline: 1px solid hotpink;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  inline-size: clamp(300px, 70%, 600px);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.about__skills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.projects_list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media screen and (min-width: 640px) {
+  .hero {
+    flex-direction: row;
+  }
+
+  .hero__avatar {
+    max-inline-size: 40%;
+  }
+}

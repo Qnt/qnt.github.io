@@ -1,8 +1,3 @@
-/*
-  Josh's Custom CSS Reset
-  https://www.joshwcomeau.com/css/custom-css-reset/
-*/
-
 *,
 *::before,
 *::after {
@@ -14,6 +9,7 @@
 }
 
 body {
+  margin: 0;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -42,6 +38,10 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+}
+
+ul {
+  list-style: none;
 }
 
 #root,
