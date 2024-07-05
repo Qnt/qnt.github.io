@@ -2,56 +2,86 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="stylesheet" href="styles/reset.css" />
-    <link rel="stylesheet" href="styles/style.css" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <!-- <link rel="stylesheet" href="/src/styles/reset.css" />
+    <link rel="stylesheet" href="/src/styles/style.css" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Qnt Studio</title>
   </head>
   <body>
-    <main>
+    <main class="main-wrapper">
       <section id="hero">
-        <div class="hero__content">
-          <h1 class="hero__title">Hey, I&apos;m Ainur</h1>
-          <p class="hero__description">Frontend and stuff</p>
-          <div class="hero__contacts">
-            <a href="https://github.com/qnt" target="_blank">Github</a>
-            <a href="https://t.me/Cusco_Quint" target="_blank">Telegram</a>
-            <a href="#">CV</a>
+        <div class="about">
+          <img
+            src="/src/assets/images/avatar.png"
+            alt="avatar"
+            class="about__avatar"
+          />
+          <div class="about__content">
+            <h1 class="about__title">Hey, I&apos;m Ainur</h1>
+            <p class="about__subtitle">Frontend and stuff</p>
+            <ul class="about__skills">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>TypeScript</li>
+              <li>React</li>
+              <li>Next.js</li>
+              <li>Tailwind</li>
+              <li>Prisma.io</li>
+            </ul>
+            <div class="about__contacts">
+              <a href="https://github.com/qnt" target="_blank">Github</a>
+              <a href="https://t.me/Cusco_Quint" target="_blank">Telegram</a>
+              <a href="#">CV</a>
+            </div>
           </div>
-        </div>
-        <img src="public/avatar.png" alt="avatar" class="hero__avatar" />
-      </section>
-      <section id="about">
-        <div class="about__container">
-          <h3>Skills</h3>
-          <ul class="about__skills">
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>TypeScript</li>
-            <li>React</li>
-            <li>Next.js</li>
-            <li>Tailwind</li>
-            <li>Prisma.io</li>
-          </ul>
+          <div class="project-preview">
+            <p>some preview</p>
+          </div>
         </div>
       </section>
       <section id="projects">
-        <ul class="projects__list">
-          <li class="projects__item">
-            <h4>Project 1</h4>
-            <p class="project__description">
+        <ul class="projects-list">
+          <li class="project-item">
+            <h3 class="project-item__title">Alakazam</h3>
+            <p class="project-item__description">
+              Flash card based application for effective memorization and
+              repetition
+            </p>
+          </li>
+          <li class="project-item">
+            <h3 class="project-item__title">Unletterboxd</h3>
+            <p class="project-item__description">
+              Explore and discover new movies and TV shows
+            </p>
+          </li>
+          <li class="project-item">
+            <h3 class="project-item__title">Weather App</h3>
+            <p class="project-item__description">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut varius
               tortor a purus bibendum accumsan nec eget ligula.
-              <!-- TODO: add image -->
             </p>
-
-            <div class="project-image-placeholder"></div>
+          </li>
+          <li class="project-item">
+            <h3 class="project-item__title">Popwork</h3>
+            <p class="project-item__description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut varius
+              tortor a purus bibendum accumsan nec eget ligula.
+            </p>
+          </li>
+          <li class="project-item">
+            <h3 class="project-item__title">Armageddon</h3>
+            <p class="project-item__description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut varius
+              tortor a purus bibendum accumsan nec eget ligula.
+            </p>
           </li>
         </ul>
       </section>
     </main>
     <footer></footer>
+
+    <script src="/src/scripts/script.js" type="module"></script>
   </body>
 </html>

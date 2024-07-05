@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Instrument+Serif:ital@0;1&display=swap');
+
+:root {
+  --body-padding: clamp(0.5rem, 2vw, 1rem);
+}
+
+body {
+  font-family: 'EB Garamond', serif;
+  padding: var(--body-padding);
+}
+
+.about {
+  position: relative;
+  border: 1px dashed blue;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.about__content {
+  position: absolute;
+  bottom: 10%;
+  display: flex;
+  flex-direction: column;
+  inline-size: 70%;
+  padding: 0.5rem;
+  background-color: rgba(245, 222, 179, 0.7);
+}
+
+.about__subtitle {
+  position: absolute;
+  top: 1.8rem;
+  left: 4.1rem;
+  font-style: italic;
+}
+
+.about__skills {
+  display: flex;
+  gap: 0 0.5rem;
+  flex-wrap: wrap;
+  margin-block-start: 1rem;
+  padding: 0.5rem;
+}
+
+.about__contacts a::after {
+  content: '\2197';
+}
+
+.about__avatar {
+  border: 1px dashed lightgrey;
+  inline-size: 10rem;
+  block-size: auto;
+  align-self: end;
+}
+
+.project-preview {
+  display: none;
+}
+
+.projects-list {
+  border: 1px dashed red;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.project-item {
+  padding: 0.5rem;
+  border: 1px dashed green;
+}
+
+.project-item__title {
+  font-size: clamp(2rem, 5vw, 6rem);
+}
+
+@media screen and (min-width: 1024px) {
+  #hero {
+    position: fixed;
+    inline-size: 30rem;
+    block-size: calc(100vh - var(--body-padding) * 2);
+  }
+
+  #projects {
+    margin-inline-start: 31rem;
+  }
+
+  .about {
+    block-size: 100%;
+    align-items: stretch;
+    max-inline-size: 30rem;
+  }
+
+  .project-preview {
+    display: block;
+    border: 1px dashed red;
+    margin-block-start: 1rem;
+    flex-grow: 1;
+  }
+
+  .projects-list {
+    margin-inline: 0;
+    align-items: stretch;
+  }
+}
