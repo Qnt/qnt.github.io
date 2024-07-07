@@ -30,8 +30,42 @@
   src: url('../assets/fonts/eb-garamond-cyrillic_latin-700italic.woff2')
     format('woff2');
 }
+@font-face {
+  font-display: swap;
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/nunito-sans-cyrillic_latin-regular.woff2')
+    format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Nunito Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../assets/fonts/nunito-sans-cyrillic_latin-italic.woff2')
+    format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/nunito-sans-cyrillic_latin-700.woff2')
+    format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Nunito Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: url('../assets/fonts/nunito-sans-cyrillic_latin-700italic.woff2')
+    format('woff2');
+}
 
 :root {
+  font-size: 100%;
+
   /* Font sizes */
   --font-size--2: clamp(0.7813rem, 0.7747rem + 0.0326vi, 0.8rem);
   --font-size--1: clamp(0.9375rem, 0.9158rem + 0.1087vi, 1rem);
@@ -68,11 +102,6 @@
   --space-2xl-3xl: clamp(4.5rem, 3.4565rem + 5.2174vi, 7.5rem);
 }
 
-body {
-  font-family: 'EB Garamond', serif;
-  font-size: var(--font-size-base);
-}
-
 .main-wrapper {
   padding: var(--space-s);
 }
@@ -80,49 +109,67 @@ body {
 .about {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-2xs);
+  font-size: var(--font-size-base);
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 .about__content {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem;
 }
 
 .about__header {
-  & ::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 1px;
-    background-color: black;
-    margin-block-start: 1rem;
-  }
+  border-block-end: 1px solid black;
+  padding-block-end: var(--space-xs);
 }
 
 .about__title {
   font-size: var(--font-size-base);
   letter-spacing: calc(var(--font-size-base) * -0.025);
+  font-family: 'EB Garamond', serif;
   font-weight: 400;
   font-style: italic;
   text-transform: uppercase;
 }
 
-.about__avatar {
-  object-fit: contain;
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
 }
 
-.about__skills {
-  display: flex;
-  gap: 0 0.5rem;
-  flex-wrap: wrap;
-  margin-block-start: 1rem;
-  padding: 0.5rem;
+.tooltip__trigger {
+  color: red;
 }
 
-.about__contacts {
-  & a::after {
-    content: '\2197';
+.tooltip__content {
+  visibility: hidden;
+  position: absolute;
+  opacity: 0;
+  bottom: 100%;
+  background-color: white;
+  padding: var(--space-3xs);
+  border: 1px dashed black;
+  inline-size: max-content;
+  line-height: 1;
+  font-size: var(--font-size--2);
+  z-index: 1;
+  transition:
+    visibility 0s linear 0.2s,
+    opacity 0.2s;
+}
+
+@media (hover: hover) {
+  .tooltip {
+    &:hover .tooltip__content,
+    &:focus-visible .tooltip__content {
+      opacity: 1;
+      visibility: visible;
+      transition:
+        visibility 0s linear 0s,
+        opacity 0.2s;
+    }
   }
 }
 
