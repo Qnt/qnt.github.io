@@ -165,7 +165,6 @@ body {
 .projects-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xs);
   font-size: var(--font-size-base);
   font-family: 'Nunito Sans', sans-serif;
 }
@@ -250,7 +249,7 @@ body {
   font-family: 'Playfair Display Italic', serif;
 }
 
-@media (hover: hover) {
+@media (hover) {
   .contact-item__link:hover .contact-item__link-text {
     color: var(--color-secondary);
     transition: color 300ms;
@@ -324,5 +323,10 @@ body {
 
   .projects {
     grid-area: proj;
+  }
+
+  .project-item__image {
+    inline-size: 140px;
+    block-size: auto;
   }
 }
