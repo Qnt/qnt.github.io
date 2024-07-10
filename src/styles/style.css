@@ -102,6 +102,7 @@ body {
 .about__header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-block-end: 1px solid var(--color-secondary);
   padding-block-end: var(--space-xs);
 }
@@ -297,6 +298,41 @@ body {
   padding-block: var(--space-2xs);
   font-size: var(--font-size--2);
   font-family: 'Playfair Display Italic', serif;
+}
+
+.eye {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  block-size: 3rem;
+  aspect-ratio: 1;
+  background-color: var(--color-secondary);
+  clip-path: circle(closest-side);
+  transition: transform 100ms;
+}
+
+.eye__iris {
+  position: relative;
+  display: flex;
+  background-color: var(--color-primary);
+  block-size: 80%;
+  aspect-ratio: 1;
+  transition: transform 300ms cubic-bezier(0.2, 0.94, 0.58, 1);
+  border-radius: 50%;
+  clip-path: circle(30%);
+}
+
+.eye__reflection {
+  position: absolute;
+  background-color: white;
+  block-size: 2px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.eye__pupil {
+  fill: var(--color-primary);
+  transform: translateX(-0.5rem) translateY(-0.5rem);
 }
 
 @media (hover) {
