@@ -40,27 +40,27 @@ function throttle(func, limit) {
   };
 }
 
-const eyeEl = document.querySelector('.eye');
 const eyeIrisEl = document.querySelector('.eye__iris');
+const eyePupilEl = document.querySelector('.eye__pupil');
 
 const eye = {
-  x: eyeEl.getBoundingClientRect().x,
-  y: eyeEl.getBoundingClientRect().y,
-  eyeWidth: eyeEl.getBoundingClientRect().width,
-  eyeHeight: eyeEl.getBoundingClientRect().height,
+  x: eyeIrisEl.getBoundingClientRect().x,
+  y: eyeIrisEl.getBoundingClientRect().y,
+  eyeWidth: eyeIrisEl.getBoundingClientRect().width,
+  eyeHeight: eyeIrisEl.getBoundingClientRect().height,
   centerX: 0,
   centerY: 0,
   updateX() {
-    this.x = eyeEl.getBoundingClientRect().x;
+    this.x = eyeIrisEl.getBoundingClientRect().x;
   },
   updateY() {
-    this.y = eyeEl.getBoundingClientRect().y;
+    this.y = eyeIrisEl.getBoundingClientRect().y;
   },
   updateHeight() {
-    this.eyeHeight = eyeEl.getBoundingClientRect().height;
+    this.eyeHeight = eyeIrisEl.getBoundingClientRect().height;
   },
   updateWidth() {
-    this.eyeWidth = eyeEl.getBoundingClientRect().width;
+    this.eyeWidth = eyeIrisEl.getBoundingClientRect().width;
   },
   updateCenterX() {
     this.centerX = this.x + this.eyeWidth / 2;
@@ -102,7 +102,7 @@ function onMouseMoveHandler(event) {
 
   let translateX;
   let translateY;
-  let coefficient = 50;
+  let coefficient = 30;
 
   if (eye.centerX >= mouse.x) {
     translateX = ((mouse.x - eye.centerX) / eye.centerX) * coefficient;
@@ -121,8 +121,7 @@ function onMouseMoveHandler(event) {
   }
 
   eyeIrisEl.style.transform = `translate(${translateX}%, ${translateY}%)`;
-  // console.log('eye', eye.x, eye.y);
-  // console.log('mouse', mouse.x, mouse.y);
+  eyePupilEl.style.transform = `translate(${translateX}%, ${translateY}%)`;
 }
 
 document.addEventListener('mousemove', throttle(onMouseMoveHandler, 100));
