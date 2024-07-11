@@ -300,28 +300,96 @@ body {
   font-family: 'Playfair Display Italic', serif;
 }
 
-.eye {
-  block-size: 3rem;
-  inline-size: auto;
-  clip-path: circle(closest-side);
-  transition: transform 100ms;
+.stage {
+  --eyeball-radius: 150;
+  block-size: calc(var(--eyeball-radius) * 1%);
+  aspect-ratio: 1;
+  display: inline-block;
 }
 
-.eye__iris {
-  transition: transform 300ms cubic-bezier(0.2, 0.94, 0.58, 1);
-  fill: var(--color-secondary);
+.eyeball {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  height: 100%;
+  aspect-ratio: 1;
+  clip-path: circle(49%);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 50% 50%,
+      hsla(0, 0%, 100%, 0.8),
+      hsla(0, 0%, 100%, 0.8) 14%,
+      hsla(0, 0%, 100%, 0) 24%
+    );
+    transform: translateX(-30%) translateY(-30%) skewX(-20deg);
+  }
 }
 
-.eye__pupil {
-  transition: transform 300ms cubic-bezier(0.2, 0.94, 0.58, 1);
-}
-
-.eye__reflection {
+.eyeball_shadow {
+  background: radial-gradient(
+    circle at 50% 40%,
+    transparent 68%,
+    var(--color-primary) 100%
+  );
   position: absolute;
-  background-color: white;
-  block-size: 2px;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.eyeball__iris {
+  --translate-x: 0;
+  --translate-y: 0;
+  width: 50%;
   aspect-ratio: 1;
   border-radius: 50%;
+  background-color: var(--color-secondary);
+  position: absolute;
+  transition: transform 400ms;
+  transform: translateX(calc(var(--translate-x) * 100%))
+    translateY(calc(var(--translate-y) * 100%)) skewY(0) scaleX(1) scaleY(1);
+  background: radial-gradient(
+    circle at 50% 50%,
+    #208ab4 0%,
+    #6fbfff 30%,
+    #4381b2 100%
+  );
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 37.5%;
+    height: 37.5%;
+    border-radius: 50%;
+    top: 31.25%;
+    left: 31.25%;
+    background: black;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 31.25%;
+    height: 31.25%;
+    border-radius: 100%;
+    top: 18.75%;
+    left: 18.75%;
+    background: rgba(255, 255, 255, 0.2);
+  }
 }
 
 @media (hover) {

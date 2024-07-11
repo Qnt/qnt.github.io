@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import '../styles/reset.css';
 import '../styles/style.css';
@@ -40,27 +41,27 @@ function throttle(func, limit) {
   };
 }
 
-const eyeIrisEl = document.querySelector('.eye__iris');
-const eyePupilEl = document.querySelector('.eye__pupil');
+const eyeballEl = document.querySelector('.eyeball');
+const irisEl = document.querySelector('.eyeball__iris');
 
 const eye = {
-  x: eyeIrisEl.getBoundingClientRect().x,
-  y: eyeIrisEl.getBoundingClientRect().y,
-  eyeWidth: eyeIrisEl.getBoundingClientRect().width,
-  eyeHeight: eyeIrisEl.getBoundingClientRect().height,
+  x: eyeballEl.getBoundingClientRect().x,
+  y: eyeballEl.getBoundingClientRect().y,
+  eyeWidth: eyeballEl.getBoundingClientRect().width,
+  eyeHeight: eyeballEl.getBoundingClientRect().height,
   centerX: 0,
   centerY: 0,
   updateX() {
-    this.x = eyeIrisEl.getBoundingClientRect().x;
+    this.x = eyeballEl.getBoundingClientRect().x;
   },
   updateY() {
-    this.y = eyeIrisEl.getBoundingClientRect().y;
-  },
-  updateHeight() {
-    this.eyeHeight = eyeIrisEl.getBoundingClientRect().height;
+    this.y = eyeballEl.getBoundingClientRect().y;
   },
   updateWidth() {
-    this.eyeWidth = eyeIrisEl.getBoundingClientRect().width;
+    this.eyeWidth = eyeballEl.getBoundingClientRect().width;
+  },
+  updateHeight() {
+    this.eyeHeight = eyeballEl.getBoundingClientRect().height;
   },
   updateCenterX() {
     this.centerX = this.x + this.eyeWidth / 2;
@@ -78,51 +79,28 @@ const eye = {
   },
 };
 
-const mouse = {
-  x: 0,
-  y: 0,
-
-  updateX(event) {
-    this.x = event.clientX;
-  },
-  updateY(event) {
-    this.y = event.clientY;
-  },
-};
-
 eye.updateAll();
+
+const maxValueX = Math.max(window.innerWidth - eye.centerX, eye.centerX);
+const maxValueY = Math.max(window.innerHeight - eye.centerY, eye.centerY);
+
+function onMouseMoveHandler(event) {
+  let mouseXNormalized = (event.clientX - eye.centerX) / maxValueX;
+  let mouseYNormalized = (event.clientY - eye.centerY) / maxValueY;
+
+  // mapping window coordinates to circle coordinates
+  // credits to https://mathproofs.blogspot.com/2005/07/mapping-square-to-circle.html
+  let translateX =
+    mouseXNormalized * Math.sqrt(1 - Math.pow(mouseYNormalized, 2) * 0.5);
+  let translateY =
+    mouseYNormalized * Math.sqrt(1 - Math.pow(mouseXNormalized, 2) * 0.5);
+
+  irisEl.style.setProperty('--translate-x', translateX);
+  irisEl.style.setProperty('--translate-y', translateY);
+}
 
 function onWindowResizeHandler() {
   eye.updateAll();
 }
-
-function onMouseMoveHandler(event) {
-  mouse.updateX(event);
-  mouse.updateY(event);
-
-  let translateX;
-  let translateY;
-  let coefficient = 30;
-
-  if (eye.centerX >= mouse.x) {
-    translateX = ((mouse.x - eye.centerX) / eye.centerX) * coefficient;
-  } else {
-    translateX =
-      ((eye.centerX - mouse.x) / (eye.centerX - window.innerWidth)) *
-      coefficient;
-  }
-
-  if (eye.centerY >= mouse.y) {
-    translateY = ((mouse.y - eye.centerY) / eye.centerY) * coefficient;
-  } else {
-    translateY =
-      ((eye.centerY - mouse.y) / (eye.centerY - window.innerHeight)) *
-      coefficient;
-  }
-
-  eyeIrisEl.style.transform = `translate(${translateX}%, ${translateY}%)`;
-  eyePupilEl.style.transform = `translate(${translateX}%, ${translateY}%)`;
-}
-
 document.addEventListener('mousemove', throttle(onMouseMoveHandler, 100));
-window.addEventListener('resize', throttle(onWindowResizeHandler, 50));
+window.addEventListener('resize', throttle(onWindowResizeHandler, 100));
