@@ -102,5 +102,5 @@ function onMouseMoveHandler(event) {
 function onWindowResizeHandler() {
   eye.updateAll();
 }
-document.addEventListener('mousemove', throttle(onMouseMoveHandler, 100));
-window.addEventListener('resize', throttle(onWindowResizeHandler, 100));
+document.addEventListener('mousemove', throttle(onMouseMoveHandler, 200));
+window.addEventListener('resize', throttle(onWindowResizeHandler, 200));
