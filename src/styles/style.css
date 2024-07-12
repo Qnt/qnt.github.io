@@ -22,13 +22,10 @@
   --max-w: 80rem;
 
   /* Colors */
-  --color-bg: light-dark(hsl(80, 13%, 95%), #0d0e0b);
-  --color-primary: light-dark(hsl(255, 41%, 23%), #b8acdc);
-  --color-secondary: light-dark(hsl(258, 79%, 51%), #a08be1);
-
-  --color-tag-gradient-start: light-dark(hsla(255, 84%, 75%, 0.2), #382f50);
-  --color-tag-gradient-end: light-dark(hsla(255, 56%, 67%, 0.2), #382f50);
-
+  --color-bg: light-dark(hsl(80, 13%, 95%), hsl(80, 12%, 5%));
+  --color-primary: light-dark(hsl(255, 41%, 23%), hsl(255, 41%, 77%));
+  --color-secondary: light-dark(hsl(258, 79%, 51%), hsl(255, 59%, 71%));
+  --color-accent: light-dark(hsl(254, 41%, 89%), hsl(256, 26%, 25%));
   --brightness: 1;
 
   /* Font sizes */
@@ -289,11 +286,7 @@ body {
 .project__tag {
   padding-inline: var(--space-2xs);
   font-size: var(--font-size--2);
-  background: linear-gradient(
-    to right,
-    var(--color-tag-gradient-start),
-    var(--color-tag-gradient-end)
-  );
+  background-color: var(--color-accent);
   border-radius: var(--font-size--2);
 }
 
@@ -312,8 +305,10 @@ body {
 
 .footer {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  gap: var(--space-2xs);
   padding: var(--space-2xs);
   font-size: var(--font-size--2);
   font-family: 'Playfair Display Italic', serif;
@@ -321,53 +316,50 @@ body {
   max-inline-size: var(--max-w);
   inline-size: 100%;
   margin-inline: auto;
-  margin-block-start: var(--space-m);
+  margin-block-end: var(--space-3xs);
 }
 
 .theme-switcher {
-  position: relative;
-  display: grid;
-  flex: 0 0 auto;
-  grid-template-columns: repeat(3, 1fr);
-  place-items: center;
+  display: flex;
+  align-items: center;
   color: light-dark(var(--color-secondary), var(--color-primary));
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0%;
-    width: 34%;
-    height: 100%;
-    opacity: 0.5;
-    transition: var(--hover-transition-time) left ease;
-    border-radius: 4px;
-    background: linear-gradient(
-      to right,
-      var(--color-tag-gradient-start),
-      var(--color-tag-gradient-end)
-    );
-    z-index: -1;
-  }
+  font-size: var(--font-size--2);
+  font-family: 'Playfair Display Italic', serif;
+  text-transform: lowercase;
+  background-color: var(--color-accent);
+  border-radius: 2em;
+  padding: 2px;
+  line-height: 1;
 }
 
 .theme-switcher__label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  padding: var(--space-3xs);
 }
 
 .theme-switcher__radio {
-  display: none;
+  position: absolute;
+  inset: 0;
+  block-size: 100%;
+  inline-size: 100%;
+  appearance: none;
   cursor: pointer;
+  border-radius: 2em;
 }
 
-.theme-switcher:has(#theme-switcher__light-dark:checked)::before {
-  left: 0%;
+.theme-switcher__text {
+  padding-block-start: 0.2em;
+  padding-block-end: 0.4em;
+  padding-inline: 0.67em;
+  background-color: transparent;
+  border-radius: 2em;
 }
-.theme-switcher:has(#theme-switcher__light:checked)::before {
-  left: 33%;
-}
-.theme-switcher:has(#theme-switcher__dark:checked)::before {
-  left: 66%;
+
+.theme-switcher__radio:checked + .theme-switcher__text {
+  background-color: var(--color-bg);
 }
 
 .stage {
@@ -541,6 +533,12 @@ body {
   }
 }
 
+@media screen and (min-width: 450px) {
+  .footer {
+    flex-direction: row;
+  }
+}
+
 @media screen and (min-width: 800px) {
   .main-wrapper {
     display: grid;
@@ -559,11 +557,6 @@ body {
 
   .about {
     grid-area: about;
-  }
-
-  .theme-switcher {
-    grid-area: misc;
-    align-self: start;
   }
 
   .projects {

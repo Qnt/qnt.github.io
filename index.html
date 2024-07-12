@@ -173,78 +173,7 @@
           </figure>
         </div>
       </section>
-      <section id="misc" class="misc">
-        <div class="theme-switcher">
-          <label class="theme-switcher__label">
-            <input
-              name="color-scheme"
-              type="radio"
-              value="light dark"
-              class="theme-switcher__radio"
-              id="theme-switcher__light-dark"
-              checked
-            /><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="theme-switcher__icon"
-            >
-              <path
-                d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8M10 19v-3.96 3.15M7 19h5"
-              />
-              <rect width="6" height="10" x="16" y="12" rx="2" />
-            </svg>
-          </label>
-          <label class="theme-switcher__label"
-            ><input
-              name="color-scheme"
-              type="radio"
-              value="light"
-              class="theme-switcher__radio"
-              id="theme-switcher__light" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="theme-switcher__icon"
-            >
-              <circle cx="12" cy="12" r="4" />
-              <path
-                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
-              /></svg
-          ></label>
-          <label class="theme-switcher__label"
-            ><input
-              name="color-scheme"
-              type="radio"
-              value="dark"
-              class="theme-switcher__radio"
-              id="theme-switcher__dark" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="theme-switcher__icon"
-            >
-              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg
-          ></label>
-        </div>
-      </section>
+
       <section id="projects" class="projects">
         <header class="projects__header">
           <h2 class="section-title">Проекты</h2>
@@ -382,6 +311,39 @@
       </section>
     </main>
     <footer class="footer">
+      <div class="theme-switcher">
+        <label class="theme-switcher__label"
+          ><input
+            name="color-scheme"
+            type="radio"
+            value="light"
+            class="theme-switcher__radio"
+            id="theme-switcher__light"
+          />
+          <span class="theme-switcher__text">светлая</span>
+        </label>
+        <label class="theme-switcher__label">
+          <input
+            name="color-scheme"
+            type="radio"
+            value="light dark"
+            class="theme-switcher__radio"
+            id="theme-switcher__light-dark"
+            checked
+          />
+          <span class="theme-switcher__text">системная</span>
+        </label>
+        <label class="theme-switcher__label"
+          ><input
+            name="color-scheme"
+            type="radio"
+            value="dark"
+            class="theme-switcher__radio"
+            id="theme-switcher__dark"
+          />
+          <span class="theme-switcher__text">тёмная</span>
+        </label>
+      </div>
       <p>Обновлён: 11 июля 2024 года</p>
     </footer>
     <script src="/src/scripts/script.js" type="module"></script>
