@@ -197,12 +197,21 @@ body {
   transition: color var(--hover-transition-time);
 }
 
-.yank-icon {
+.yank-button {
   inline-size: var(--font-size--2);
   block-size: var(--font-size--2);
-  stroke: var(--color-secondary);
   cursor: pointer;
+  vertical-align: middle;
+  border: 0;
+  background: 0;
   transition: opacity var(--hover-transition-time);
+  outline-offset: 2px;
+}
+
+.yank-button__icon {
+  stroke: var(--color-secondary);
+  inline-size: var(--font-size-base);
+  block-size: auto;
 }
 
 .projects {
@@ -471,7 +480,7 @@ body {
   }
 
   .about__avatar-wrapper {
-    filter: blur(calc(var(--blur) * 0.5));
+    filter: blur(calc(var(--blur)));
     transition: filter var(--hover-transition-time);
 
     &:hover {
@@ -493,38 +502,17 @@ body {
     fill: var(--color-secondary);
   }
 
+  .contact-item:not(:hover) .yank-button {
+    opacity: 0;
+  }
+
+  .contact-item:not(:hover) .yank-button:focus-visible {
+    opacity: 1;
+  }
+
   .project__link:hover {
     color: var(--color-secondary);
     transition: color var(--hover-transition-time);
-  }
-
-  .yank-icon {
-    visibility: hidden;
-    opacity: 0;
-    transition:
-      visibility 0s 500ms,
-      opacity var(--hover-transition-time) var(--hover-transition-delay);
-    &:hover {
-      visibility: visible;
-      opacity: 1;
-      transition:
-        visibility 0 var(--hover-transition-time),
-        opacity var(--hover-transition-time);
-    }
-  }
-
-  .yank-icon:hover {
-    stroke: var(--color-secondary);
-  }
-
-  .contact-item__link:hover + .yank-icon {
-    visibility: visible;
-    stroke: var(--color-secondary);
-    opacity: 1;
-    transition:
-      visibility 0s,
-      opacity var(--hover-transition-time) var(--hover-transition-delay),
-      stroke var(--hover-transition-time) var(--hover-transition-delay);
   }
 
   .project__image {

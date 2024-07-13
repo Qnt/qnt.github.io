@@ -3,7 +3,9 @@
 import '../styles/reset.css';
 import '../styles/style.css';
 
-const yankButtons = document.querySelectorAll('.yank-icon');
+/* copy to clipboard logic */
+
+const yankButtons = document.querySelectorAll('.yank-button');
 
 yankButtons.forEach((yankButton) => {
   yankButton.addEventListener('click', () => {
@@ -17,6 +19,8 @@ yankButtons.forEach((yankButton) => {
     navigator.clipboard.writeText(href);
   });
 });
+
+/* throttle function */
 
 function throttle(func, limit) {
   let lastFunc;
@@ -40,6 +44,8 @@ function throttle(func, limit) {
     }
   };
 }
+
+/* all-seeing eye logic*/
 
 const eyeballEl = document.querySelector('.eyeball');
 const irisEl = document.querySelector('.eyeball__iris');
