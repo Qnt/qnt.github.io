@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import '../styles/reset.css';
@@ -5,18 +6,67 @@ import '../styles/style.css';
 
 /* copy to clipboard logic */
 
-const yankButtons = document.querySelectorAll('.yank-button');
+const yankButtons = document.querySelectorAll('.contact__yank-button');
+
+function copyToClipboard(href, yankButton) {
+  try {
+    navigator.clipboard
+      .writeText(href)
+      .then(() => {
+        try {
+          if (window.matchMedia('(width <= 800px)').matches) {
+            let popupEl = document.querySelector('.popup');
+            popupEl.hidden = false;
+            setTimeout(() => {
+              popupEl.hidden = true;
+            }, 2000);
+          } else {
+            const yankIconEl = yankButton.firstElementChild;
+            const yankStatusEl = yankButton.nextElementSibling;
+            yankButton.disabled = true;
+            yankIconEl.outerHTML = `<svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="contact__yank-icon"
+                >
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>`;
+            yankStatusEl.hidden = false;
+            yankStatusEl.textContent = 'Скопировано';
+            setTimeout(() => {
+              yankButton.disabled = false;
+              yankButton.firstElementChild.outerHTML = yankIconEl.outerHTML;
+              yankStatusEl.hidden = true;
+              yankStatusEl.textContent = '';
+            }, 2000);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      })
+      .catch((error) => console.log(error));
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 yankButtons.forEach((yankButton) => {
   yankButton.addEventListener('click', () => {
-    const anchorEl = yankButton.parentElement.querySelector(
-      '.contact-item__link',
-    );
-    let href = anchorEl.getAttribute('href');
+    let href = yankButton.parentElement
+      .querySelector('.contact__link')
+      .getAttribute('href');
+
     if (href.includes('mailto:')) {
       href = href.replace('mailto:', '');
     }
-    navigator.clipboard.writeText(href);
+
+    copyToClipboard(href, yankButton);
   });
 });
 

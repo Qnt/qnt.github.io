@@ -108,7 +108,7 @@ body {
   font-family: 'Nunito Sans', sans-serif;
   color: var(--color-primary);
   flex: 1 1 auto;
-
+  position: relative;
   max-inline-size: var(--max-w);
   margin-inline: auto;
 }
@@ -170,20 +170,22 @@ body {
   grid-area: contacts;
 }
 
-.contact-item {
+.contact {
   display: flex;
   align-items: center;
   gap: var(--space-3xs);
 }
 
-.contact-item__icon {
+.contact__icon {
   block-size: var(--font-size--1);
   inline-size: var(--font-size--1);
-  fill: var(--color-primary);
-  transition: fill 300ms;
+  stroke: currentColor;
+  fill: none;
+  transition: stroke 300ms;
+  flex: 0 0 auto;
 }
 
-.contact-item__link {
+.contact__link {
   display: flex;
   align-items: center;
   gap: var(--space-3xs);
@@ -192,12 +194,12 @@ body {
   transition: text-decoration-color var(--hover-transition-time);
 }
 
-.contact-item__link-text {
+.contact__link-text {
   position: relative;
   transition: color var(--hover-transition-time);
 }
 
-.yank-button {
+.contact__yank-button {
   inline-size: var(--font-size--2);
   block-size: var(--font-size--2);
   cursor: pointer;
@@ -208,10 +210,19 @@ body {
   outline-offset: 2px;
 }
 
-.yank-button__icon {
+.contact__yank-icon {
   stroke: var(--color-secondary);
   inline-size: var(--font-size-base);
   block-size: auto;
+}
+
+.contact__status {
+  visibility: hidden;
+  color: var(--color-secondary);
+}
+
+.contact__yank-button:disabled + .contact__status {
+  visibility: visible;
 }
 
 .projects {
@@ -472,6 +483,29 @@ body {
   }
 }
 
+.popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2xs);
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-inline: var(--space-xs);
+  padding-block: var(--space-2xs);
+  border-radius: 2rem;
+  color: var(--color-secondary);
+  background-color: var(--color-accent);
+  box-shadow: 0 0.5rem 0.5rem 0 hsla(225, 95%, 15%, 0.2);
+  z-index: 2;
+  transition: top var(--hover-transition-time);
+}
+
+.popup:not([hidden]) {
+  top: var(--space-2xs);
+}
+
 @media (hover: hover) {
   :root {
     --blur: 1.25rem;
@@ -488,25 +522,26 @@ body {
     }
   }
 
-  .contact-item__link:hover {
+  .contact__link:hover {
     text-decoration-color: var(--color-secondary);
     transition: text-decoration-color var(--hover-transition-time);
   }
 
-  .contact-item__link:hover .contact-item__link-text {
+  .contact__link:hover .contact__link-text {
     color: var(--color-secondary);
     transition: color var(--hover-transition-time);
   }
 
-  .contact-item__link:hover .contact-item__icon {
-    fill: var(--color-secondary);
+  .contact__link:hover .contact__icon {
+    stroke: var(--color-secondary);
   }
 
-  .contact-item:not(:hover) .yank-button {
+  .contact:not(:hover) .contact__yank-button {
     opacity: 0;
   }
 
-  .contact-item:not(:hover) .yank-button:focus-visible {
+  .contact:not(:hover) .contact__yank-button:focus-visible,
+  .contact:not(:hover) .contact__yank-button:disabled {
     opacity: 1;
   }
 
