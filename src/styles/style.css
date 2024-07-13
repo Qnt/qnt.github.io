@@ -189,20 +189,20 @@ body {
   gap: var(--space-3xs);
   inline-size: fit-content;
   color: var(--color-primary);
-  text-decoration: none;
+  transition: text-decoration-color var(--hover-transition-time);
 }
 
 .contact-item__link-text {
   position: relative;
-  text-decoration: underline;
-  transition: color 300ms;
+  transition: color var(--hover-transition-time);
 }
 
 .yank-icon {
   inline-size: var(--font-size--2);
   block-size: var(--font-size--2);
-  stroke: var(--color-primary);
+  stroke: var(--color-secondary);
   cursor: pointer;
+  transition: opacity var(--hover-transition-time);
 }
 
 .projects {
@@ -227,12 +227,6 @@ body {
   border-block-end: 1px solid var(--color-secondary);
 }
 
-.project__link {
-  cursor: pointer;
-  color: unset;
-  text-decoration: unset;
-}
-
 .project__image-wrapper {
   flex: 0 0 auto;
   align-self: center;
@@ -255,6 +249,16 @@ body {
   flex-direction: column;
   flex: 1 1 auto;
   padding: var(--space-2xs);
+}
+
+.project__header {
+  display: flex;
+}
+
+.project__link {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--hover-transition-time);
 }
 
 .project__title {
@@ -291,9 +295,6 @@ body {
 }
 
 .project__aside {
-  gap: var(--space-2xs);
-  justify-content: flex-end;
-  align-items: center;
   font-size: var(--font-size--2);
   color: var(--color-secondary);
   padding: var(--space-2xs);
@@ -462,7 +463,7 @@ body {
   }
 }
 
-@media (hover) {
+@media (hover: hover) {
   :root {
     --blur: 1.25rem;
     --hover-transition-time: 300ms;
@@ -478,6 +479,11 @@ body {
     }
   }
 
+  .contact-item__link:hover {
+    text-decoration-color: var(--color-secondary);
+    transition: text-decoration-color var(--hover-transition-time);
+  }
+
   .contact-item__link:hover .contact-item__link-text {
     color: var(--color-secondary);
     transition: color var(--hover-transition-time);
@@ -485,7 +491,11 @@ body {
 
   .contact-item__link:hover .contact-item__icon {
     fill: var(--color-secondary);
-    transition: fill var(--hover-transition-time);
+  }
+
+  .project__link:hover {
+    color: var(--color-secondary);
+    transition: color var(--hover-transition-time);
   }
 
   .yank-icon {
@@ -493,15 +503,13 @@ body {
     opacity: 0;
     transition:
       visibility 0s 500ms,
-      opacity var(--hover-transition-time) var(--hover-transition-delay),
-      stroke var(--hover-transition-time) var(--hover-transition-delay);
+      opacity var(--hover-transition-time) var(--hover-transition-delay);
     &:hover {
       visibility: visible;
       opacity: 1;
       transition:
-        visibility 0 300ms,
-        opacity var(--hover-transition-time),
-        stroke var(--hover-transition-time);
+        visibility 0 var(--hover-transition-time),
+        opacity var(--hover-transition-time);
     }
   }
 

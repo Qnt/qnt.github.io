@@ -131,7 +131,7 @@
               </svg>
             </li>
             <li class="contact-item">
-              <a href="#" class="contact-item__link" download="CV.pdf"
+              <a href="#" class="link contact-item__link" download="CV.pdf"
                 ><svg
                   role="img"
                   viewBox="0 0 24 24"
@@ -179,134 +179,137 @@
           <h2 class="section-title">Проекты</h2>
         </header>
         <div class="projects__list">
-          <a href="https://github.com/qnt/alakazam" class="project__link">
-            <article class="project">
-              <div class="project__image-wrapper">
-                <picture>
-                  <source
-                    type="image/webp"
-                    srcset="
-                      /src/assets/images/alakazam-small.webp  100w,
-                      /src/assets/images/alakazam-medium.webp 300w,
-                      /src/assets/images/alakazam-large.webp  800w
-                    "
-                    sizes="(max-width: 600px) 100px, 800px"
-                  />
-                  <img
-                    class="project__image"
-                    src="/src/assets/images/alakazam-medium.webp"
-                    alt="Иконка приложения Alakazam"
-                    height="120"
-                    width="120"
-                  />
-                </picture>
-              </div>
-              <div class="project__content">
-                <header class="project__header">
-                  <h3 class="project__title">Alakazam</h3>
-                </header>
-                <p class="project__description">
-                  Приложение на основе карточек для эффективного запоминания и
-                  повторения
-                </p>
-                <div class="project__footer">
-                  <ul class="project__tags">
-                    <li class="project__tag">Next.js</li>
-                    <li class="project__tag">PostgreSQL</li>
-                    <li class="project__tag">Prisma ORM</li>
-                    <li class="project__tag">Clerk</li>
-                    <li class="project__tag">Daisy UI</li>
-                    <li class="project__tag">Responsive</li>
-                  </ul>
-                </div>
-              </div>
-              <aside class="project__aside">
-                <p class="project__date">[2024]</p>
-              </aside>
-            </article>
-          </a>
-
-          <a href="https://github.com/qnt/unletterboxd" class="project__link">
-            <article class="project">
-              <div class="project__image-wrapper">
-                <picture>
-                  <source
-                    type="image/webp"
-                    srcset="
-                      /src/assets/images/unletterboxd-small.webp  100w,
-                      /src/assets/images/unletterboxd-medium.webp 300w,
-                      /src/assets/images/unletterboxd-large.webp  800w
-                    "
-                    sizes="(max-width: 600px) 100px, 800px"
-                  />
-                  <img
-                    class="project__image"
-                    src="/src/assets/images/unletterboxd-medium.webp"
-                    alt="иконка приложения Unletterboxd"
-                    height="120"
-                    width="120"
-                  />
-                </picture>
-              </div>
-              <div class="project__content">
-                <header class="project__header">
-                  <h3 class="project__title">Unletterboxd</h3>
-                </header>
-                <p class="project__description">
-                  Сайта с информацией о фильмах и сериалах
-                </p>
+          <article class="project">
+            <div class="project__image-wrapper">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="
+                    /src/assets/images/alakazam-small.webp  100w,
+                    /src/assets/images/alakazam-medium.webp 300w,
+                    /src/assets/images/alakazam-large.webp  800w
+                  "
+                  sizes="(max-width: 600px) 100px, 800px"
+                />
+                <img
+                  class="project__image"
+                  src="/src/assets/images/alakazam-medium.webp"
+                  alt="Иконка приложения Alakazam"
+                  height="120"
+                  width="120"
+                />
+              </picture>
+            </div>
+            <div class="project__content">
+              <header class="project__header">
+                <a
+                  href="https://alakazam-nine.vercel.app/"
+                  class="project__link"
+                  ><h3 class="project__title">Alakazam</h3></a
+                >
+              </header>
+              <p class="project__description">
+                Приложение на основе карточек для эффективного запоминания и
+                повторения.
+              </p>
+              <div class="project__footer">
+                <a href="https://github.com/qnt/weather-app">гитхаб</a>
                 <ul class="project__tags">
                   <li class="project__tag">Next.js</li>
-                  <li class="project__tag">chadcn/ui</li>
-                  <li class="project__tag">TMDB API</li>
-                </ul>
-              </div>
-              <aside class="project__aside">
-                <p class="project__date">[2024]</p>
-              </aside>
-            </article>
-          </a>
-
-          <a href="https://github.com/qnt/weather-app" class="project__link">
-            <article class="project">
-              <div class="project__image-wrapper">
-                <picture>
-                  <source
-                    type="image/webp"
-                    srcset="
-                      /src/assets/images/weather-app-small.webp  100w,
-                      /src/assets/images/weather-app-medium.webp 300w,
-                      /src/assets/images/weather-app-large.webp  800w
-                    "
-                    sizes="(max-width: 600px) 100px, 800px"
-                  />
-                  <img
-                    class="project__image"
-                    src="/src/assets/images/weather-app-medium.webp"
-                    alt="Иконка приложенияWeather App"
-                    height="120"
-                    width="120"
-                  />
-                </picture>
-              </div>
-              <div class="project__content">
-                <header class="project__header">
-                  <h3 class="project__title">Weather App</h3>
-                </header>
-                <p class="project__description">
-                  Название говорит само за себя
-                </p>
-                <ul class="project__tags">
-                  <li class="project__tag">Vanilla JS</li>
-                  <li class="project__tag">Open Meteo API</li>
+                  <li class="project__tag">PostgreSQL</li>
+                  <li class="project__tag">Prisma ORM</li>
+                  <li class="project__tag">Clerk</li>
+                  <li class="project__tag">Daisy UI</li>
                   <li class="project__tag">Responsive</li>
                 </ul>
               </div>
-              <aside class="project__aside">
-                <p class="project__date">[2024]</p>
-              </aside>
-            </article>
-          </a>
+            </div>
+            <aside class="project__aside">
+              <p class="project__date">[2024]</p>
+            </aside>
+          </article>
+
+          <article class="project">
+            <div class="project__image-wrapper">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="
+                    /src/assets/images/unletterboxd-small.webp  100w,
+                    /src/assets/images/unletterboxd-medium.webp 300w,
+                    /src/assets/images/unletterboxd-large.webp  800w
+                  "
+                  sizes="(max-width: 600px) 100px, 800px"
+                />
+                <img
+                  class="project__image"
+                  src="/src/assets/images/unletterboxd-medium.webp"
+                  alt="иконка приложения Unletterboxd"
+                  height="120"
+                  width="120"
+                />
+              </picture>
+            </div>
+            <div class="project__content">
+              <header class="project__header">
+                <a href="https://unletterboxd.vercel.app/" class="project__link"
+                  ><h3 class="project__title">Unletterboxd</h3></a
+                >
+              </header>
+              <p class="project__description">
+                Сайта с информацией о фильмах и сериалах.
+              </p>
+              <ul class="project__tags">
+                <li class="project__tag">Next.js</li>
+                <li class="project__tag">chadcn/ui</li>
+                <li class="project__tag">TMDB API</li>
+              </ul>
+            </div>
+            <aside class="project__aside">
+              <p class="project__date">[2024]</p>
+            </aside>
+          </article>
+
+          <article class="project">
+            <div class="project__image-wrapper">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="
+                    /src/assets/images/weather-app-small.webp  100w,
+                    /src/assets/images/weather-app-medium.webp 300w,
+                    /src/assets/images/weather-app-large.webp  800w
+                  "
+                  sizes="(max-width: 600px) 100px, 800px"
+                />
+                <img
+                  class="project__image"
+                  src="/src/assets/images/weather-app-medium.webp"
+                  alt="Иконка приложенияWeather App"
+                  height="120"
+                  width="120"
+                />
+              </picture>
+            </div>
+            <div class="project__content">
+              <header class="project__header">
+                <a
+                  href="https://github.com/qnt/weather-app"
+                  class="project__link"
+                  ><h3 class="project__title">Weather App</h3></a
+                >
+              </header>
+              <p class="project__description">Название говорит само за себя.</p>
+              <ul class="project__tags">
+                <li class="project__tag">Vanilla JS</li>
+                <li class="project__tag">Open Meteo API</li>
+                <li class="project__tag">Responsive</li>
+              </ul>
+            </div>
+            <aside class="project__aside">
+              <p class="project__date">[2024]</p>
+            </aside>
+          </article>
         </div>
       </section>
     </main>
