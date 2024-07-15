@@ -162,3 +162,18 @@ function onWindowResizeHandler() {
 }
 document.addEventListener('mousemove', throttle(onMouseMoveHandler, 200));
 window.addEventListener('resize', throttle(onWindowResizeHandler, 200));
+
+/* fog logic */
+
+const BLUR_DEFAULT_VALUE = 1.25;
+function toggleFog() {
+  const blurValue = getComputedStyle(document.documentElement).getPropertyValue(
+    '--blur',
+  );
+  document.documentElement.style.setProperty(
+    '--blur',
+    blurValue === '0' ? `${BLUR_DEFAULT_VALUE}rem` : '0',
+  );
+}
+
+eyeballEl.addEventListener('click', toggleFog);

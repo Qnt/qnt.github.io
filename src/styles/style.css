@@ -19,6 +19,9 @@
   font-size: 100%;
   color-scheme: light dark;
 
+  --blur: 1.25rem;
+  --hover-transition-time: 300ms;
+
   --max-w: 80rem;
 
   /* Colors */
@@ -524,11 +527,10 @@ body {
 }
 
 @media (hover: hover) {
-  :root {
+  /* :root {
     --blur: 1.25rem;
     --hover-transition-time: 300ms;
-    --hover-transition-delay: 500ms;
-  }
+  } */
 
   .about__avatar-wrapper {
     filter: blur(calc(var(--blur)));
