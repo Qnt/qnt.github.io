@@ -8,52 +8,54 @@ import '../styles/style.css';
 
 const yankButtons = document.querySelectorAll('.contact__yank-button');
 
+function showPopup() {
+  let popupEl = document.querySelector('.popup');
+  popupEl.hidden = false;
+  setTimeout(() => {
+    popupEl.hidden = true;
+  }, 2000);
+}
+
+function updateButtonState(yankButton, yankIconEl, yankStatusEl) {
+  yankButton.disabled = true;
+  yankIconEl.outerHTML = `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="12"
+    height="12"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="contact__yank-icon"
+  >
+    <path d="M20 6 9 17l-5-5"/>
+  </svg>`;
+  yankStatusEl.hidden = false;
+  yankStatusEl.textContent = 'Скопировано';
+  setTimeout(() => {
+    yankButton.disabled = false;
+    yankButton.firstElementChild.outerHTML = yankIconEl.outerHTML;
+    yankStatusEl.hidden = true;
+    yankStatusEl.textContent = '';
+  }, 2000);
+}
+
 function copyToClipboard(href, yankButton) {
-  try {
-    navigator.clipboard
-      .writeText(href)
-      .then(() => {
-        try {
-          if (window.matchMedia('(width <= 800px)').matches) {
-            let popupEl = document.querySelector('.popup');
-            popupEl.hidden = false;
-            setTimeout(() => {
-              popupEl.hidden = true;
-            }, 2000);
-          } else {
-            const yankIconEl = yankButton.firstElementChild;
-            const yankStatusEl = yankButton.nextElementSibling;
-            yankButton.disabled = true;
-            yankIconEl.outerHTML = `<svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="12"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="contact__yank-icon"
-                >
-                  <path d="M20 6 9 17l-5-5"/>
-                </svg>`;
-            yankStatusEl.hidden = false;
-            yankStatusEl.textContent = 'Скопировано';
-            setTimeout(() => {
-              yankButton.disabled = false;
-              yankButton.firstElementChild.outerHTML = yankIconEl.outerHTML;
-              yankStatusEl.hidden = true;
-              yankStatusEl.textContent = '';
-            }, 2000);
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      })
-      .catch((error) => console.log(error));
-  } catch (error) {
-    console.log(error);
-  }
+  navigator.clipboard
+    .writeText(href)
+    .then(() => {
+      if (window.matchMedia('(width <= 900px)').matches) {
+        showPopup();
+      } else {
+        const yankIconEl = yankButton.firstElementChild;
+        const yankStatusEl = yankButton.nextElementSibling;
+        updateButtonState(yankButton, yankIconEl, yankStatusEl);
+      }
+    })
+    .catch((error) =>
+      console.log('Ошибка при копировании в буфер обмена:', error),
+    );
 }
 
 yankButtons.forEach((yankButton) => {
