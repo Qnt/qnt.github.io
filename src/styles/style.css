@@ -21,7 +21,6 @@
 
   --blur: 1.25rem;
   --hover-transition-time: 300ms;
-
   --max-w: 80rem;
 
   /* Colors */
@@ -29,7 +28,6 @@
   --color-primary: light-dark(hsl(255, 41%, 23%), hsl(255, 41%, 77%));
   --color-secondary: light-dark(hsl(258, 79%, 51%), hsl(255, 59%, 71%));
   --color-accent: light-dark(hsl(254, 41%, 89%), hsl(256, 26%, 25%));
-  --brightness: 1;
 
   /* Font sizes */
   --font-size--2: clamp(0.7813rem, 0.7747rem + 0.0326vi, 0.8rem);
@@ -78,11 +76,7 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --brightness: 0.75;
-  }
-}
+/* if current theme is dark, set the default blur value to 0 */
 
 body {
   background-color: var(--color-bg);
@@ -527,11 +521,6 @@ body {
 }
 
 @media (hover: hover) {
-  /* :root {
-    --blur: 1.25rem;
-    --hover-transition-time: 300ms;
-  } */
-
   .about__avatar-wrapper {
     filter: blur(calc(var(--blur)));
     transition: filter var(--hover-transition-time);
@@ -570,7 +559,7 @@ body {
   }
 
   .project__image {
-    filter: blur(var(--blur)) brightness(var(--brightness));
+    filter: blur(var(--blur));
     transition: filter var(--hover-transition-time);
   }
 
