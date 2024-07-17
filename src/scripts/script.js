@@ -1,5 +1,4 @@
 /* eslint-disable no-debugger */
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import '../styles/reset.css';
 import '../styles/style.css';
@@ -54,6 +53,7 @@ function copyToClipboard(href, yankButton) {
       }
     })
     .catch((error) =>
+      // eslint-disable-next-line no-console
       console.log('Ошибка при копировании в буфер обмена:', error),
     );
 }
@@ -170,15 +170,6 @@ window.addEventListener('resize', onWindowResizeHandlerThrottled);
 /* blur logic */
 
 const BLUR_DEFAULT_VALUE = 1.25;
-function toggleBlur() {
-  const blurValue = getComputedStyle(document.documentElement).getPropertyValue(
-    '--blur',
-  );
-  document.documentElement.style.setProperty(
-    '--blur',
-    blurValue === '0' ? `${BLUR_DEFAULT_VALUE}rem` : '0',
-  );
-}
 
 function blur(blurValue) {
   document.documentElement.style.setProperty('--blur', `${blurValue}rem`);
@@ -209,7 +200,16 @@ function changeBlurMode(blurMode) {
 
 eyeballEl.addEventListener('click', () => {
   const blurMode = localStorage.getItem('blurMode');
-  console.log(blurMode);
   changeBlurMode(blurMode);
   localStorage.setItem('blurMode', blurMode === 'true' ? 'false' : 'true');
+});
+
+/* theme switcher logic */
+
+const themeSwitcherEl = document.querySelector('.theme-switcher');
+themeSwitcherEl.querySelectorAll('input[type="radio"]').forEach((radio) => {
+  radio.checked = radio.value === localStorage.getItem('theme');
+});
+themeSwitcherEl.addEventListener('click', (event) => {
+  localStorage.setItem('theme', event.target.value);
 });
