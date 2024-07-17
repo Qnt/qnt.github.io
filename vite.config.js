@@ -5,6 +5,7 @@ import Inspect from 'vite-plugin-inspect';
 export default defineConfig({
   publicDir: 'public',
   root: './',
+  base: '/<REPO>/',
   build: {
     outDir: 'dist',
   },
