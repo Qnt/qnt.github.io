@@ -97,7 +97,8 @@ body {
 }
 
 .main-wrapper {
-  padding: var(--space-2xs);
+  padding-inline: var(--space-2xs);
+  padding-block: var(--space-m);
   display: flex;
   flex-direction: column;
   gap: var(--space-s);

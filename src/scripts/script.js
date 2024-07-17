@@ -160,13 +160,17 @@ function onMouseMoveHandler(event) {
 function onWindowResizeHandler() {
   eye.updateAll();
 }
-document.addEventListener('mousemove', throttle(onMouseMoveHandler, 200));
-window.addEventListener('resize', throttle(onWindowResizeHandler, 200));
 
-/* fog logic */
+const onMouseMoveHandlerThrottled = throttle(onMouseMoveHandler, 200);
+const onWindowResizeHandlerThrottled = throttle(onWindowResizeHandler, 200);
+
+document.addEventListener('mousemove', onMouseMoveHandlerThrottled);
+window.addEventListener('resize', onWindowResizeHandlerThrottled);
+
+/* blur logic */
 
 const BLUR_DEFAULT_VALUE = 1.25;
-function toggleFog() {
+function toggleBlur() {
   const blurValue = getComputedStyle(document.documentElement).getPropertyValue(
     '--blur',
   );
@@ -176,4 +180,36 @@ function toggleFog() {
   );
 }
 
-eyeballEl.addEventListener('click', toggleFog);
+function blur(blurValue) {
+  document.documentElement.style.setProperty('--blur', `${blurValue}rem`);
+}
+
+function toggleEye(blurMode) {
+  if (blurMode) {
+    document.removeEventListener('mousemove', onMouseMoveHandlerThrottled);
+  } else {
+    document.addEventListener('mousemove', onMouseMoveHandlerThrottled);
+  }
+}
+
+const blurMode = localStorage.getItem('blurMode');
+if (blurMode === null) {
+  localStorage.setItem('blurMode', true);
+  blur(BLUR_DEFAULT_VALUE);
+} else if (blurMode === 'true') {
+  blur(BLUR_DEFAULT_VALUE);
+} else {
+  blur(0);
+}
+
+function changeBlurMode(blurMode) {
+  blur(blurMode === 'true' ? 0 : BLUR_DEFAULT_VALUE);
+  toggleEye(blurMode);
+}
+
+eyeballEl.addEventListener('click', () => {
+  const blurMode = localStorage.getItem('blurMode');
+  console.log(blurMode);
+  changeBlurMode(blurMode);
+  localStorage.setItem('blurMode', blurMode === 'true' ? 'false' : 'true');
+});
