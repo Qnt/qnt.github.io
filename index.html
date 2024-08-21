@@ -26,8 +26,7 @@
         <div class="about__content">
           <div class="about__description">
             <p>
-              Фронтенд разработчик, увлечённый веб дизайном и цифровым
-              искусством.
+              Фронтенд разработчик, увлечённый веб дизайном. Мой стек технологий включает в себя TypeScript, Next.js, React, Prisma ORM, PostgreSQL.
             </p>
           </div>
           <ul class="contacts-list">
@@ -184,7 +183,7 @@
               ></span>
             </li>
             <li class="contact">
-              <a href="#" class="link contact__link" download="CV.pdf"
+              <a href="public/CV.pdf" class="link contact__link" download="cv.pdf"
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -209,7 +208,7 @@
             </li>
           </ul>
 
-          <figure class="about__avatar-wrapper">
+          <!-- <figure class="about__avatar-wrapper">
             <picture>
               <source
                 type="image/webp"
@@ -232,7 +231,7 @@
             <figcaption class="about__avatar-description">
               Рисунок 1.1 - я в начале 2024 года
             </figcaption>
-          </figure>
+          </figure> -->
         </div>
       </section>
 
@@ -275,6 +274,24 @@
                 Приложение на основе карточек для эффективного запоминания и
                 повторения.
               </p>
+              <ul class="project__achievements">
+                <li>Построил полнофункциональное full-stack приложение;</li>
+                <li>Реализовал адаптивный дизайн и Mobile First подход;</li>
+                <li>Эффективно использовал компоненты библиотеки DaisyUI;</li>
+                <li>Разработал схему базы данных PostgreSQL;</li>
+                <li>
+                  Использовал Prisma ORM для взаимодействия с базой данных.
+                </li>
+                <li>
+                  Использовал автогенерацию Zod схем на основе моделей Prisma
+                  для согласованности типов между бэкендом и фронтендом;
+                </li>
+                <li>Интегрировал Clerk для аутентификации пользователей;</li>
+                <li>
+                  Использовал React Server Components (RSC) и Server Actions.
+                </li>
+              </ul>
+
               <ul class="project__tags">
                 <li class="project__tag">Next.js</li>
                 <li class="project__tag">PostgreSQL</li>
@@ -343,8 +360,14 @@
                 >
               </header>
               <p class="project__description">
-                Сайта с информацией о фильмах и сериалах.
+                Сайт с информацией о фильмах и сериалах.
               </p>
+              <ul class="project__achievements">
+                <li>Ипользовал schadcn/ui для создания ui;</li>
+                <li>Ипользовал TMDB API для получения информации о фильмах, сериалах и т.д.</li>
+                <li>Интегрировал библиотеку OpenAPi TS для типобезопасного получения данных с API</li> 
+                <li>В ходе разработки нашёл баг в данных получаемы от API, создал по нему тикет и вскоре он был исправлен </li>
+              </ul>
               <ul class="project__tags">
                 <li class="project__tag">Next.js</li>
                 <li class="project__tag">chadcn/ui</li>
@@ -410,9 +433,13 @@
                 >
               </header>
               <p class="project__description">
-                Приложение компании по уничтожению астероидов (тестовое задание
-                компании "Квартирка").
+                Приложение компании по уничтожению астероидов.
               </p>
+              <ul class="project__achievements">
+                <li>Реализовал адаптивный интерфейс и Mobile First подход;</li>
+                <li>Использовал Next.js для создания приложения;</li>
+                <li>Использовал Nasa API для получения информации о астероидах;</li>
+                <li>В качестве стейт менеджера использовал Context.</li>
               <ul class="project__tags">
                 <li class="project__tag">Next.js</li>
                 <li class="project__tag">Nasa API</li>
@@ -461,7 +488,7 @@
                 <img
                   class="project__image"
                   src="/src/assets/images/weather-app-large.webp"
-                  alt="Иконка приложенияWeather App"
+                  alt="Иконка приложения Weather App"
                   height="120"
                   width="120"
                 />
@@ -476,7 +503,12 @@
                   ><h3 class="project__title">Weather App</h3></a
                 >
               </header>
-              <p class="project__description">Название говорит само за себя.</p>
+              <p class="project__description">Приложение для получения информации о погоде на ванильном JavaScript.</p>
+              <ul class="project__achievements">
+                <li>Для получения информации о погоде использовал Open Meteo API;</li>
+                <li>Для поиска использовал debouncer, уменьшающий количество запросов;</li>
+                <li>Усовершенствовал навыки в ванильном JavaScript и CSS.</li>
+              </ul>
               <ul class="project__tags">
                 <li class="project__tag">Vanilla JS</li>
                 <li class="project__tag">Open Meteo API</li>

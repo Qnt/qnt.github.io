@@ -176,7 +176,7 @@ function blur(blurValue) {
 }
 
 function toggleEye(blurMode) {
-  if (blurMode) {
+  if (blurMode == 'true') {
     document.removeEventListener('mousemove', onMouseMoveHandlerThrottled);
   } else {
     document.addEventListener('mousemove', onMouseMoveHandlerThrottled);
@@ -195,12 +195,12 @@ if (blurMode === null) {
 
 function changeBlurMode(blurMode) {
   blur(blurMode === 'true' ? 0 : BLUR_DEFAULT_VALUE);
-  toggleEye(blurMode);
 }
 
 eyeballEl.addEventListener('click', () => {
   const blurMode = localStorage.getItem('blurMode');
   changeBlurMode(blurMode);
+  toggleEye(blurMode);
   localStorage.setItem('blurMode', blurMode === 'true' ? 'false' : 'true');
 });
 

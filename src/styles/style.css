@@ -292,8 +292,13 @@ body {
   margin-block-start: var(--space-2xs);
   font-size: var(--font-size-base);
   font-family: 'Nunito Sans', sans-serif;
-  line-height: 1.2;
+  line-height: 1.5;
   text-wrap: pretty;
+}
+
+.project__achievements {
+  list-style-type: disc;
+  list-style-position: inside;
 }
 
 .project__tags {
